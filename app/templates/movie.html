@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+<!-- Content block -->
+{% block content %}
+  {% if id %}
+  <h1>Behold, movie id: {{ id }}</h1>
+  {% else %}
+  <h1>We don't seem to have any info to display</h1>
+  {% endif %}
+{% endblock %}
