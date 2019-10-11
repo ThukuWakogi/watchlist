@@ -1,4 +1,11 @@
 {% extends 'base.html' %}
+{% import 'macros.html' as macro %}
+
+<!-- Styles Block -->
+{% block styles %}
+  {{ super() }}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock %}
 
 <!-- Content block -->
 {% block content %}
@@ -10,9 +17,20 @@
       <h3>{{ movie.title }}</h3>
       <p class="overview">{{ movie.overview }}</p>
       <p class="ratings">
-        <b>{{ movie.vote-average }}</b> - <i>{{ movie.vote-count }}</i>
+        <b>{{ movie.vote_average }}</b> - <i>{{ movie.vote_count }}</i>
+        <a href="/movie/review/new/{{ movie.id }}" class="ratings">Write a new review</a>
       </p>
     </div>
+  </div>
+  <div class="row">
+    <h1>Reviews</h1>
+    <hr>
+    {% if reviews %}
+      {{ macro.displayReviews(reviews) }}
+    {% else %}
+      <h3 class="text-center">This movie has no reviews</h3>
+      <a href="/movie/review/new/{{ movie.id }}" class="btn btn-success btn-lg text-center">Write a new review</a>
+    {% endif %}
   </div>
 </div>
 {% endblock %}

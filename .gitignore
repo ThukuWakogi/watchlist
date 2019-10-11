@@ -2,3 +2,5 @@ virtual
 *.pyc
 .vscode
 instance
+start.bat
+start.sh
