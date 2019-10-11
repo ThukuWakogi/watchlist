@@ -2,9 +2,17 @@
 
 <!-- Content block -->
 {% block content %}
-  {% if id %}
-  <h1>Behold, movie id: {{ id }}</h1>
-  {% else %}
-  <h1>We don't seem to have any info to display</h1>
-  {% endif %}
+<div class="container">
+  <!-- Poster background -->
+  <div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 posterPath" style="background: url({{movie.poster}}) no-repeat center center"></div>
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 movie-details">
+      <h3>{{ movie.title }}</h3>
+      <p class="overview">{{ movie.overview }}</p>
+      <p class="ratings">
+        <b>{{ movie.vote-average }}</b> - <i>{{ movie.vote-count }}</i>
+      </p>
+    </div>
+  </div>
+</div>
 {% endblock %}
